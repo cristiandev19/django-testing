@@ -1,0 +1,9 @@
+<h1>{{ post.post_text }}</h1>
+
+<ul>
+{% for comment in comments %}
+    <li>{{ comment.comment_text}}</li>
+{% endfor %}
+</ul>
+
+<a href="/posts">Regresar</a>
