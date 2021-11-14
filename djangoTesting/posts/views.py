@@ -51,11 +51,22 @@ def comment(request, post_id):
         raise Http404("Post does not exist")
     return render(request, 'posts/comment.html', {'post': post})
 
+def post(request):
+    return render(request, 'posts/post.html', {})
+
+
 def createComment(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     comment = Comment(post=post, comment_text=request.POST['comment'], pub_date=timezone.now())
     comment.save()
     return HttpResponseRedirect(reverse('posts:results', args=(post.id,)))
+
+
+def createPost(request):
+    post = Post(post_text=request.POST['post'], pub_date=timezone.now())
+    post.save()
+    return HttpResponseRedirect('/posts')
+
 
 def results(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
