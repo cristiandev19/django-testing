@@ -22,9 +22,19 @@ urlpatterns = [
         name='comment'
     ),
     path(
+        'new/',
+        views.post,
+        name='post'
+    ),
+    path(
         '<int:post_id>/create-comment/',
         views.createComment,
         name='create-comment'
+    ),
+    path(
+        'create-post/',
+        views.createPost,
+        name='create-post'
     ),
     path(
         '<int:post_id>/results/',
