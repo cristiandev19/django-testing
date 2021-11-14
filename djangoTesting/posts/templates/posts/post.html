@@ -7,16 +7,19 @@
 {% block content %}
 
     <div class="container-sm	">
-        <form action="{% url 'posts:create-comment' post.id %}" method="post">
+        <form action="{% url 'posts:create-post' %}" method="post">
         {% csrf_token %}
         <fieldset>
-            <legend><h1>{{ post.post_text }}</h1></legend>
             {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-            <label for="comment">Escribe tu comentario</label><br>
-            <input class="form-control" type="text" name="comment" id="choice">
+            <label for="post">Escribe tu post</label><br>
+            <input class="form-control" type="text" name="post" id="choice">
         </fieldset>
         <input  class="btn btn-primary" type="submit" value="Guardar">
         </form>
+
+        <a  class="btn btn-secondary" href="/posts">Regresar</a>
+
+        
     </div>
 
 {% endblock content %}

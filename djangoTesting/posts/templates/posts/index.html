@@ -1,16 +1,38 @@
-{% if latest_post_list %}
-    <ul>
-    {% for post in latest_post_list %}
-        <li>
-          <a href="{% url 'posts:detail' post.id %}">
-            {{ post.post_text }}
-          </a>
-          <a href="{% url 'posts:comment' post.id %}">
-            comentar
-          </a>
-        </li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No posts are available.</p>
-{% endif %}
+{% extends "layout.html" %}
+
+{% block content %}
+
+    <div class="container-sm	">
+    {% if latest_post_list %}
+      <ul class="">
+      {% for post in latest_post_list %}
+          <li class="card-body">
+            <span >
+              {{ post.post_text }} ({{ post.pub_date }})
+            </span>
+            <a class="btn btn-info" href="/posts/{{post.id}}/results">
+              Ver comentarios
+            </a>
+            <a  class="btn btn-primary" href="{% url 'posts:comment' post.id %}">
+              comentar
+            </a>
+          </li>
+      {% endfor %}
+      </ul>
+    {% else %}
+        <p>No posts are available.</p>
+    {% endif %}
+
+
+        <div>
+        <a  class="btn btn-primary" href="/posts/new">
+          Crear nuevo post
+        </a>
+      </div>
+
+    </div>
+
+
+
+{% endblock content %}
+

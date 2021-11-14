@@ -1,9 +1,29 @@
-<h1>{{ post.post_text }}</h1>
+
+
+
+
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+    <div class="container-sm	">
+<h1>{{ post.post_text }} ({{ post.pub_date }})</h1>
 
 <ul>
 {% for comment in comments %}
-    <li>{{ comment.comment_text}}</li>
+    <li>{{ comment.comment_text}} ({{comment.pub_date}})</li>
 {% endfor %}
 </ul>
 
-<a href="/posts">Regresar</a>
+
+    <a class="btn btn-primary" href="{% url 'posts:comment' post.id %}">
+        Nuevo comentario
+    </a>
+    <a  class="btn btn-secondary" href="/posts">Regresar</a>
+
+    </div>
+
+{% endblock content %}
+
+
