@@ -54,10 +54,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'djangoTesting.urls'
 
+
+LOGIN_REDIRECT_URL = '/posts/'
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 'DIRS': [],
+        'DIRS': [str(BASE_DIR.joinpath('templates'))],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
