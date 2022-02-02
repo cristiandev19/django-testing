@@ -88,3 +88,24 @@ class PostIndexViewTests(TestCase):
             response.context['latest_post_list'],
             [post2, post1],
         )
+
+def simple_suma():
+    return 1 + 1
+
+def greater_zero(a):
+    if (a > 0):
+        return True
+
+    else:
+        return False
+
+class SimpleTest(TestCase):
+    def test_simple_suma(self):
+        self.assertEqual(simple_suma(), 2)
+
+    def test_greater_than_zero(self):
+        self.assertEqual(greater_zero(2), True)
+
+
+    def test_lower_than_zero(self):
+        self.assertEqual(greater_zero(-2), False)
